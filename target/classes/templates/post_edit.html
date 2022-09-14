@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editing post</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+
+<body>
+<header th:insert="fragment/header :: header"></header>
+
+<div class="container mt-5 mb-5"><h1>Edit</h1>
+
+    <div th:each="p : ${post}">
+        <form th:action="'/post/'+${p.id}+'/edit'" method="post">
+            <input type="text" th:value="${p.title}" name="title" placeholder="Enter post title"
+                   class="form-control">
+            <br>
+            <input type="text" th:value="${p.anons}" name="anons" placeholder="Enter post announcement"
+                   class="form-control">
+            <br>
+            <textarea th:text="${p.text}" name="text" placeholder="Enter post full text"
+                      class="form-control">
+            </textarea>
+            <br>
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
+</div>
+<div th:insert="fragment/footer :: footer"></div>
+</body>
+</html>
+
